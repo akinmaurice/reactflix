@@ -42,12 +42,12 @@ color: #FFF;
   background-image: url('./bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #e82c75;
 }
 .card-text {
   font-size: 30px;
   color: #e82c75;
 }
-
 
 footer {
   padding-top: 3rem;

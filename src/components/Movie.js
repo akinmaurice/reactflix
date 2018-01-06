@@ -1,10 +1,8 @@
 import React from 'react';
 
 const Movie = props => (
-  <div className="row">
-    <div className="col-lg-12">
+  <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
   Hello
-    </div>
   </div>
 );
 
