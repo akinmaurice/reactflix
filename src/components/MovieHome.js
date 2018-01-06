@@ -12,8 +12,7 @@ const MovieHome = (props) => {
   const movieGenres = movie.genres;
   const genreList = Object.keys(movieGenres).map(genre => <Genre key={genre} genre={movieGenres[genre]} />);
   const movieVideos = movie.videos.results;
-  const videoList = Object.keys(movieVideos).map(video => <Trailer key={video} genre={movieVideos[video]} />);
-  console.log(movieVideos);
+  const videoList = Object.keys(movieVideos).map(video => <Trailer key={video} trailer={movieVideos[video]} />);
   return (
     <div>
       <div className="container-fluid">
@@ -44,6 +43,13 @@ const MovieHome = (props) => {
           </div>
         </div>
         <br />
+        <div className="row text-center">
+          <div className="col-lg-12">
+            <hr />
+            <h4 className="movieTitle">Trailers</h4>
+            <hr />
+          </div>
+        </div>
         <div className="row text-center">
           {videoList}
         </div>
