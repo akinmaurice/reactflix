@@ -18,8 +18,6 @@ import './css/font-awesome.min.css';
 import './css/style.css';
 
 
-require('dotenv').config();
-
 /*
  fonts Import here
 */
