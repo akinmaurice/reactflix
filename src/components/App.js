@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
+import Movie from './Movie';
 import loadingSvg from '../helpers';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      message: '',
-      status: false,
+      data: [
+        { name: 'blah Blah' },
+        { name: 'jdjdjdjd' },
+        { name: 'jfjfjfjfj' },
+      ],
+      loading: false,
     };
     this.apiUrl = 'http://localhost:3001/data';
   }
@@ -17,6 +21,13 @@ class App extends Component {
   componentDidMount() {
   }
   render() {
+    const { data } = this.state;
+    const { loading } = this.state;
+    let views = <div />;
+    if (loading === false && data.length >= 1) {
+      console.log(data.length);
+      views = Object.keys(data).map(movie => <Movie key={movie} details={data[movie]} />);
+    }
     // <img src={loadingSvg} alt="Loading..." className="loadingSvg" />
     return (
       <div>
@@ -38,6 +49,7 @@ class App extends Component {
               </h5>
             </div>
           </div>
+          {views}
         </div>
       </div>
     );
