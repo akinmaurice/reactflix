@@ -2,6 +2,7 @@ body {
     padding-top: 55px;
     font-family: Karla;
     background: #000;
+    color: #ccc !important;
 }
 
 
@@ -28,7 +29,7 @@ color: #FFF;
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 0;
-  background: linear-gradient(90deg, #a026bf, #e82c75);
+  background: #000;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 0;
@@ -59,4 +60,9 @@ footer p {
 
 .btn-warning {
   color: #000 !important;
+}
+
+.searchInput {
+  border-radius: 25px;
+  font-size: 14px;
 }
