@@ -39,7 +39,11 @@ class App extends Component {
     if (!loading && status) {
       views = <p>Movie!</p>;
     } else if (loading && !status) {
-      views = <img src={loadingSvg} alt="Loading..." className="loadingSvg" />;
+      views = (
+        <div className="col-lg-12">
+          <img src={loadingSvg} alt="Loading..." className="loadingSvg" />
+        </div>
+      );
     } else if (!loading && !status) {
       views = (
         <div className="col-lg-12">

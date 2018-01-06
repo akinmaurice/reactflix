@@ -33,7 +33,11 @@ class App extends Component {
     if (!loading && data.length >= 1) {
       views = Object.keys(data).map(movie => <MovieCard key={movie} details={data[movie]} />);
     } else if (loading && !data.length) {
-      views = <img src={loadingSvg} alt="Loading..." className="loadingSvg" />;
+      views = (
+        <div className="col-lg-12">
+          <img src={loadingSvg} alt="Loading..." className="loadingSvg" />
+        </div>
+      );
     } else if (!loading && !data.length) {
       views = (
         <div className="col-lg-12">
