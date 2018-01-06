@@ -3,7 +3,6 @@ import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import MovieCard from './MovieCard';
-import loadingSvg from '../helpers';
 import appTitle from '../helpers';
 
 class App extends Component {
@@ -34,8 +33,8 @@ class App extends Component {
       views = Object.keys(data).map(movie => <MovieCard key={movie} details={data[movie]} />);
     } else if (loading && !data.length) {
       views = (
-        <div className="col-lg-12">
-          <img src={loadingSvg} alt="Loading..." className="loadingSvg" />
+        <div className="col-lg-12 text-center">
+          <i className="fa fa-2x fa-circle-o-notch fa-spin" />
         </div>
       );
     } else if (!loading && !data.length) {

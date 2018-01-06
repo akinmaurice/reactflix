@@ -3,7 +3,6 @@ import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import TvCard from './TvCard';
-import loadingSvg from '../loadSvg';
 import appTitle from '../helpers';
 
 class Tvshows extends Component {
@@ -35,7 +34,7 @@ class Tvshows extends Component {
     } else if (loading && !data.length) {
       views = (
         <div className="col-lg-12">
-          <img src={loadingSvg} alt="Loading..." className="loadingSvg" />
+          <i className="fa fa-2x fa-circle-o-notch fa-spin" />
         </div>
       );
     } else if (!loading && !data.length) {
