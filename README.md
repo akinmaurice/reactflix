@@ -1,6 +1,6 @@
 # reactflix
 
-NodeJS, ExpressJS and MongoDB RESTful API with JWT authentication.
+React JS Movie Web APp Using The Movie Database (TMDB) API.
 
 ## Getting Started
 
@@ -11,7 +11,7 @@ NodeJS, ExpressJS and MongoDB RESTful API with JWT authentication.
 
 The above will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Todo List
+## Todo
 
   1. Movie and Tv Show Search with Auto Complete
   2. Display Casts and Reviews for Movies
