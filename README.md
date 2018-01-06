@@ -11,6 +11,11 @@ NodeJS, ExpressJS and MongoDB RESTful API with JWT authentication.
 
 The above will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+## Todo List
+
+  1. Movie and Tv Show Search with Auto Complete
+  2. Display Casts and Reviews for Movies
+  3. Display Tv Shows airing on each Day at the top of tv shows component
 
 ## License
 
