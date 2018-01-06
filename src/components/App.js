@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
+import Footer from './Footer';
 import Movie from './Movie';
 import loadingSvg from '../helpers';
 import appTitle from '../helpers';
@@ -9,27 +10,38 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: [
-        { name: 'blah Blah' },
-        { name: 'jdjdjdjd' },
-        { name: 'jfjfjfjfj' },
-        { name: 'jfjfjfjfj' },
-      ],
+      data: [],
       loading: false,
     };
-    this.apiUrl = 'http://localhost:3001/data';
+    this.apiUrl = ' https://api.themoviedb.org/3/movie/popular?api_key=b6ee2fdea63e38fc13788ccec1b2b7d8&language=en-US';
   }
 
   componentDidMount() {
+    axios.get(this.apiUrl)
+      .then((response) => {
+        const movieData = response.data.results;
+        this.setState({ data: movieData });
+      });
   }
   render() {
     const { data } = this.state;
     const { loading } = this.state;
     let views = <div />;
-    if (loading === false && data.length >= 1) {
+    if (!loading && data.length >= 1) {
       views = Object.keys(data).map(movie => <Movie key={movie} details={data[movie]} />);
+    } else if (loading && !data.length) {
+      views = <img src={loadingSvg} alt="Loading..." className="loadingSvg" />;
+    } else if (!loading && !data.length) {
+      views = (
+        <div className="col-lg-12">
+          <div className="text-center">
+            <button className="btn btn-danger">
+              No Movies to Show
+            </button>
+          </div>
+        </div>
+      );
     }
-    // <img src={loadingSvg} alt="Loading..." className="loadingSvg" />
     return (
       <div>
         <Header appTitle={appTitle} />

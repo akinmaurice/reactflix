@@ -39,23 +39,22 @@ color: #FFF;
 
 .card {
   margin-bottom: 20px;
+  min-height: 250px;
+  height: 250px;
+  max-height: 250px;
   background-image: url('./bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #e82c75;
+  background-color: #000000;
 }
 .card-text {
   font-size: 30px;
   color: #e82c75;
 }
 
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
 footer p {
-  margin-bottom: .25rem;
+  font-size: 13px;
+  color: #a026bf;
 }
 
 .btn-warning {
@@ -65,4 +64,9 @@ footer p {
 .searchInput {
   border-radius: 25px;
   font-size: 14px;
+}
+
+.btn-app {
+  font-size: 13px;
+  background: linear-gradient(90deg, #a026bf, #e82c75);
 }

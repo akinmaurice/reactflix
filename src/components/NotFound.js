@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import appTitle from '../helpers';
 
 const NotFound = props => (
   <div>
-    <Header />
+    <Header appTitle={appTitle} />
     <div className="container text-center">
       <br />
       <br />
