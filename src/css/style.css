@@ -66,17 +66,34 @@ footer p {
 
 .btn-app {
   font-size: 13px;
-  background: linear-gradient(90deg, #a026bf, #e82c75);
+  background: #564d4d;
+  margin: 5px;
 }
 
 .breadcrumb {
-  background-color: #000000;
+  background-color: #564d4d;
   font-size: 13px;
 }
 
-a {
+.active {
+  color: #000000 !important;
+}
+
+.breadcrumb a {
+  color: #000000;
+}
+.breadcrumb a:hover {
+  color: #000000;
+}
+
+.movieTitle{
   color: #831010;
 }
-a:hover {
-  color: #831010;
+
+.movieOverview {
+  font-size: 12px;
+}
+
+.movieYear {
+  font-size: 10px;
 }
