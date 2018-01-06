@@ -6,11 +6,12 @@ body {
 }
 
 .navbar-dark {
-background: linear-gradient(90deg, #a026bf, #e82c75);
+/*background: linear-gradient(90deg, #a026bf, #e82c75);*/
+background-color: #191919;
 }
 
 .navbar-brand {
-  color: #FFF !important;
+  color: #db0000 !important;
 }
 
 .loadingSvg {
@@ -47,7 +48,7 @@ background: linear-gradient(90deg, #a026bf, #e82c75);
   background-image: url('./bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #000000;
+  background-color: #000;
 }
 
 footer p {
@@ -66,7 +67,8 @@ footer p {
 
 .btn-app {
   font-size: 13px;
-  background: #564d4d;
+  background: #831010;
+  color: #000000 !important;
   margin: 5px;
 }
 
@@ -96,4 +98,26 @@ footer p {
 
 .movieYear {
   font-size: 10px;
+}
+
+.jumboButton {
+    font-size: 16px;
+    background: #831010;
+    color: #000000 !important;
+    margin: 5px;
+}
+
+.trailer {
+  margin: 5px;
+}
+
+.btn-grey {
+  font-size: 10px;
+  background: #564d4d;
+  color: #000000 !important;
+  margin: 5px;
+}
+
+.badge-dark {
+  color: #fff;
 }

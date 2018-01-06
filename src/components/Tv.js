@@ -4,11 +4,11 @@ import Header from './Header';
 import Footer from './Footer';
 import loadingSvg from '../helpers';
 import appTitle from '../helpers';
-import MovieHome from './MovieHome';
+import TvHome from './TvHome';
 
 const apiKey = 'b6ee2fdea63e38fc13788ccec1b2b7d8';
 
-class Movie extends Component {
+class Tv extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,12 +19,13 @@ class Movie extends Component {
   }
 
   componentDidMount() {
-    const movieID = this.props.match.params.movieId;
-    const apiUrl = `http://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&append_to_response=videos`;
+    const tvID = this.props.match.params.tvId;
+    const apiUrl = `http://api.themoviedb.org/3/tv/${tvID}?api_key=${apiKey}&language=en-US`;
     axios.get(apiUrl)
       .then((response) => {
-        const movie = response.data;
-        this.setState({ data: movie, status: true, loading: false });
+        const tv = response.data;
+        this.setState({ data: tv, status: true, loading: false });
+        console.log(tv);
       })
       .catch((error) => {
         this.setState({ status: false, loading: false });
@@ -36,7 +37,7 @@ class Movie extends Component {
     const { status } = this.state;
     let views = <div />;
     if (!loading && status) {
-      views = <MovieHome movie={data} />;
+      views = <TvHome tv={data} />;
     } else if (loading && !status) {
       views = (
         <div className="row">
@@ -51,7 +52,7 @@ class Movie extends Component {
           <div className="text-center">
             <br />
             <button className="btn jumboButton">
-              Could not find that Movie!
+              Could not find that Show!
             </button>
           </div>
         </div>
@@ -67,4 +68,4 @@ class Movie extends Component {
   }
 }
 
-export default Movie;
+export default Tv;

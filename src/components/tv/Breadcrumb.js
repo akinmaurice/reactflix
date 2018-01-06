@@ -10,7 +10,7 @@ const Breadcrumb = (props) => {
           <Link to="/">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/movies">Movies</Link>
+          <Link to="/tv">Tv Shows</Link>
         </li>
         <li className="breadcrumb-item active">
           {title}
