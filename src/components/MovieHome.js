@@ -2,9 +2,11 @@ import React from 'react';
 import Genre from './movie/Genre';
 import Trailer from './movie/Trailer';
 import Breadcrumb from './movie/Breadcrumb';
+import moment from '../moment';
 
 const MovieHome = (props) => {
   const { movie } = props;
+  const movieReleaseYear = moment.moment(movie.release_date, 'YYYY-MM-DD').year();
   const imagePath = `http://image.tmdb.org/t/p/w185/${movie.poster_path}`;
   const styles = {
     backgroundImage: `url(${imagePath})`,
@@ -30,7 +32,7 @@ const MovieHome = (props) => {
             </h3>
             <li className="list-inline-item">
               <button className="btn btn-warning movieYear">
-            2017
+                {movieReleaseYear}
               </button>
             </li>
             <br /> <br />

@@ -1,10 +1,12 @@
 import React from 'react';
 import Genre from './tv/Genre';
 import Breadcrumb from './tv/Breadcrumb';
+import moment from '../moment';
 
 const TvHome = (props) => {
   const { tv } = props;
   const imagePath = `http://image.tmdb.org/t/p/w185/${tv.poster_path}`;
+  const tvAirYear = moment.moment(tv.first_air_date, 'YYYY-MM-DD').year();
   const styles = {
     backgroundImage: `url(${imagePath})`,
   };
@@ -29,7 +31,7 @@ const TvHome = (props) => {
             <ul className="list-inline">
               <li className="list-inline-item">
                 <button className="btn btn-warning movieYear">
-                2017
+                  {tvAirYear}
                 </button>
               </li>
               <li className="list-inline-item">

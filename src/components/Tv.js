@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
-import loadingSvg from '../helpers';
+import loadingSvg from '../loadSvg';
 import appTitle from '../helpers';
 import TvHome from './TvHome';
 
@@ -25,7 +25,6 @@ class Tv extends Component {
       .then((response) => {
         const tv = response.data;
         this.setState({ data: tv, status: true, loading: false });
-        console.log(tv);
       })
       .catch((error) => {
         this.setState({ status: false, loading: false });

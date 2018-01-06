@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import TvCard from './TvCard';
-import loadingSvg from '../helpers';
+import loadingSvg from '../loadSvg';
 import appTitle from '../helpers';
 
 class Tvshows extends Component {
@@ -21,7 +21,6 @@ class Tvshows extends Component {
       .then((response) => {
         const tvData = response.data.results;
         this.setState({ data: tvData, loading: false });
-        console.log(tvData);
       })
       .catch((error) => {
         this.setState({ loading: false });
