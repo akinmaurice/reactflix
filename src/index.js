@@ -6,6 +6,7 @@ import WebFont from 'webfontloader';
 
 
 import App from './components/App';
+import Movie from './components/Movie';
 import NotFound from './components/NotFound';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -34,6 +35,7 @@ const Root = () => (
     <div>
       <Switch>
         <Route path="/" exact component={App} />
+        <Route path="/movie/:movieId" exact component={Movie} />
         <Route component={NotFound} />
       </Switch>
     </div>

@@ -9,6 +9,7 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
+    "underscore": "^1.8.3",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {

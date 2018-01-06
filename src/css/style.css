@@ -5,10 +5,12 @@ body {
     color: #ccc !important;
 }
 
-
 .navbar-dark {
 background: linear-gradient(90deg, #a026bf, #e82c75);
-color: #FFF;
+}
+
+.navbar-brand {
+  color: #FFF !important;
 }
 
 .loadingSvg {
@@ -47,10 +49,6 @@ color: #FFF;
   background-position: center;
   background-color: #000000;
 }
-.card-text {
-  font-size: 30px;
-  color: #e82c75;
-}
 
 footer p {
   font-size: 13px;
@@ -69,4 +67,16 @@ footer p {
 .btn-app {
   font-size: 13px;
   background: linear-gradient(90deg, #a026bf, #e82c75);
+}
+
+.breadcrumb {
+  background-color: #000000;
+  font-size: 13px;
+}
+
+a {
+  color: #831010;
+}
+a:hover {
+  color: #831010;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
-import Movie from './Movie';
+import MovieCard from './MovieCard';
 import loadingSvg from '../helpers';
 import appTitle from '../helpers';
 
@@ -11,16 +11,19 @@ class App extends Component {
     super();
     this.state = {
       data: [],
-      loading: false,
+      loading: true,
     };
-    this.apiUrl = ' https://api.themoviedb.org/3/movie/popular?api_key=b6ee2fdea63e38fc13788ccec1b2b7d8&language=en-US';
+    this.apiUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=b6ee2fdea63e38fc13788ccec1b2b7d8&language=en-US';
   }
 
   componentDidMount() {
     axios.get(this.apiUrl)
       .then((response) => {
         const movieData = response.data.results;
-        this.setState({ data: movieData });
+        this.setState({ data: movieData, loading: false });
+      })
+      .catch((error) => {
+        this.setState({ loading: false });
       });
   }
   render() {
@@ -28,7 +31,7 @@ class App extends Component {
     const { loading } = this.state;
     let views = <div />;
     if (!loading && data.length >= 1) {
-      views = Object.keys(data).map(movie => <Movie key={movie} details={data[movie]} />);
+      views = Object.keys(data).map(movie => <MovieCard key={movie} details={data[movie]} />);
     } else if (loading && !data.length) {
       views = <img src={loadingSvg} alt="Loading..." className="loadingSvg" />;
     } else if (!loading && !data.length) {
