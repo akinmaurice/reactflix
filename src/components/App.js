@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import MovieCard from './MovieCard';
@@ -53,6 +54,18 @@ class App extends Component {
         <Header appTitle={appTitle} />
         <br />
         <div className="container-fluid text-center">
+          <div className="row text-center">
+            <div className="col-lg-12">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="breadcrumb-item">
+                Movies
+                </li>
+              </ol>
+            </div>
+          </div>
           <div className="row text-center">
             <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12" />
             <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">

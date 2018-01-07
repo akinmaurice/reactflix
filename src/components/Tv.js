@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import appTitle from '../helpers';
@@ -39,7 +40,7 @@ class Tv extends Component {
     } else if (loading && !status) {
       views = (
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-12 text-center">
             <i className="fa fa-2x fa-circle-o-notch fa-spin" />
           </div>
         </div>
@@ -52,6 +53,11 @@ class Tv extends Component {
             <button className="btn jumboButton">
               Could not find that Show!
             </button>
+            <br />
+            <br />
+            <Link className="btn btn-warning movieYear" to="/tv">
+              View More Shows
+            </Link>
           </div>
         </div>
       );
