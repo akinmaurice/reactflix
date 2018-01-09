@@ -7,7 +7,7 @@ import TvCard from './TvCard';
 import appTitle from '../helpers';
 
 const apiKey = 'b6ee2fdea63e38fc13788ccec1b2b7d8';
-let navTitle = 'Popular Tv Shows';
+let navTitle = 'Airing Today';
 
 class Tvshows extends Component {
   constructor() {
@@ -18,18 +18,12 @@ class Tvshows extends Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.searchTv = this.searchTv.bind(this);
-    this.apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US`;
+    this.getApiData = this.getApiData.bind(this);
+    this.apiUrl = `https://api.themoviedb.org/3/tv/airing_today?api_key=${apiKey}&language=en-US&timezone=Africa/Lagos`;
   }
 
   componentDidMount() {
-    axios.get(this.apiUrl)
-      .then((response) => {
-        const tvData = response.data.results;
-        this.setState({ data: tvData, loading: false });
-      })
-      .catch((error) => {
-        this.setState({ loading: false });
-      });
+    this.getApiData(this.apiUrl);
   }
 
   // On SUbmit Search Form
@@ -39,14 +33,12 @@ class Tvshows extends Component {
     this.searchTv(searchQuery);
   }
 
-  // Function to fetch Tv Shows with the Search Query
-  searchTv(query) {
-    this.setState({ data: [], loading: true });
-    navTitle = `Search Results for ${query}`;
-    const searchApi = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=en-US&query=${query}`;
-    axios.get(searchApi)
+  // Get Data API Function
+  getApiData(dataSource) {
+    axios.get(dataSource)
       .then((response) => {
-        const tvData = response.data.results;
+        const requestData = response.data.results;
+        const tvData = requestData.sort((a, b) => b.popularity - a.popularity);
         this.setState({ data: tvData, loading: false });
       })
       .catch((error) => {
@@ -54,7 +46,15 @@ class Tvshows extends Component {
       });
   }
 
+  // Function to fetch Tv Shows with the Search Query
+  searchTv(query) {
+    this.setState({ data: [], loading: true });
+    navTitle = `Search Results for ${query}`;
+    const searchApi = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=en-US&query=${query}`;
+    this.getApiData(searchApi);
+  }
 
+  // Render FUnction
   render() {
     const { data } = this.state;
     const { loading } = this.state;
