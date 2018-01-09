@@ -1,6 +1,6 @@
 ## REACTFLIX
 
-React JS Movie Web APp Using The Movie Database (TMDB) API.
+React JS Movie App Using Data from The Movie Database (TMDB) API.
 
 ## Features
 
