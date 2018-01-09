@@ -1,5 +1,6 @@
 import React from 'react';
 import Genre from './tv/Genre';
+import Trailer from './tv/Trailer';
 import Breadcrumb from './tv/Breadcrumb';
 import moment from '../moment';
 
@@ -13,6 +14,8 @@ const TvHome = (props) => {
   const seasonsCount = tv.seasons.length;
   const tvGenres = tv.genres;
   const genreList = Object.keys(tvGenres).map(genre => <Genre key={genre} genre={tvGenres[genre]} />);
+  const tvVideos = tv.videos.results;
+  const videoList = Object.keys(tvVideos).map(video => <Trailer key={video} trailer={tvVideos[video]} />);
   let statusView = <span />;
   if (tv.status === 'Ended') {
     statusView = <span className="badge badge-danger">{tv.status}</span>;
@@ -56,6 +59,16 @@ const TvHome = (props) => {
           </div>
         </div>
         <br />
+        <div className="row text-center">
+          <div className="col-lg-12">
+            <hr />
+            <h4 className="movieTitle">Trailers</h4>
+            <hr />
+          </div>
+        </div>
+        <div className="row text-center">
+          {videoList}
+        </div>
       </div>
     </div>
   );

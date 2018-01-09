@@ -20,10 +20,11 @@ class Tv extends Component {
 
   componentDidMount() {
     const tvID = this.props.match.params.tvId;
-    const apiUrl = `http://api.themoviedb.org/3/tv/${tvID}?api_key=${apiKey}&language=en-US`;
+    const apiUrl = `http://api.themoviedb.org/3/tv/${tvID}?api_key=${apiKey}&language=en-US&append_to_response=videos`;
     axios.get(apiUrl)
       .then((response) => {
         const tv = response.data;
+        console.log(tv);
         this.setState({ data: tv, status: true, loading: false });
       })
       .catch((error) => {
