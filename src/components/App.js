@@ -6,6 +6,9 @@ import Footer from './Footer';
 import MovieCard from './MovieCard';
 import appTitle from '../helpers';
 
+const apiKey = 'b6ee2fdea63e38fc13788ccec1b2b7d8';
+let navTitle = `Trending Movies on ${appTitle}`;
+
 class App extends Component {
   constructor() {
     super();
@@ -13,7 +16,10 @@ class App extends Component {
       data: [],
       loading: true,
     };
-    this.apiUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=b6ee2fdea63e38fc13788ccec1b2b7d8&language=en-US';
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.searchMovies = this.searchMovies.bind(this);
+    this.apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`;
   }
 
   componentDidMount() {
@@ -26,6 +32,29 @@ class App extends Component {
         this.setState({ loading: false });
       });
   }
+
+  // On SUbmit Search Form
+  onSubmit(event) {
+    event.preventDefault();
+    const searchQuery = this.q.value;
+    this.searchMovies(searchQuery);
+  }
+
+  // Function to fetch Movies with the Search Query
+  searchMovies(query) {
+    this.setState({ data: [], loading: true });
+    navTitle = `Search Results for ${query}`;
+    const searchApi = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&include_adult=false`;
+    axios.get(searchApi)
+      .then((response) => {
+        const movieData = response.data.results;
+        this.setState({ data: movieData, loading: false });
+      })
+      .catch((error) => {
+        this.setState({ loading: false });
+      });
+  }
+
   render() {
     const { data } = this.state;
     const { loading } = this.state;
@@ -69,7 +98,9 @@ class App extends Component {
           <div className="row text-center">
             <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12" />
             <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-              <input type="text" className="form-control searchInput" placeholder="Search Movies" />
+              <form onSubmit={this.onSubmit}>
+                <input ref={(input) => { this.q = input; }} type="text" className="form-control searchInput" placeholder="Search Movies" />
+              </form>
             </div>
             <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12" />
           </div>
@@ -77,7 +108,7 @@ class App extends Component {
           <div className="row text-center">
             <div className="col-lg-12">
               <h5 className="movieTitle">
-                Trending Movies on {appTitle}
+                {navTitle}
               </h5>
               <br />
             </div>

@@ -6,6 +6,9 @@ import Footer from './Footer';
 import TvCard from './TvCard';
 import appTitle from '../helpers';
 
+const apiKey = 'b6ee2fdea63e38fc13788ccec1b2b7d8';
+let navTitle = 'Popular Tv Shows';
+
 class Tvshows extends Component {
   constructor() {
     super();
@@ -13,7 +16,9 @@ class Tvshows extends Component {
       data: [],
       loading: true,
     };
-    this.apiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=b6ee2fdea63e38fc13788ccec1b2b7d8&language=en-US';
+    this.onSubmit = this.onSubmit.bind(this);
+    this.searchTv = this.searchTv.bind(this);
+    this.apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US`;
   }
 
   componentDidMount() {
@@ -26,6 +31,30 @@ class Tvshows extends Component {
         this.setState({ loading: false });
       });
   }
+
+  // On SUbmit Search Form
+  onSubmit(event) {
+    event.preventDefault();
+    const searchQuery = this.q.value;
+    this.searchTv(searchQuery);
+  }
+
+  // Function to fetch Tv Shows with the Search Query
+  searchTv(query) {
+    this.setState({ data: [], loading: true });
+    navTitle = `Search Results for ${query}`;
+    const searchApi = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=en-US&query=${query}`;
+    axios.get(searchApi)
+      .then((response) => {
+        const tvData = response.data.results;
+        this.setState({ data: tvData, loading: false });
+      })
+      .catch((error) => {
+        this.setState({ loading: false });
+      });
+  }
+
+
   render() {
     const { data } = this.state;
     const { loading } = this.state;
@@ -69,7 +98,9 @@ class Tvshows extends Component {
           <div className="row text-center">
             <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12" />
             <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-              <input type="text" className="form-control searchInput" placeholder="Search Tv Shows" />
+              <form onSubmit={this.onSubmit}>
+                <input ref={(input) => { this.q = input; }} type="text" className="form-control searchInput" placeholder="Search Tv Shows" />
+              </form>
             </div>
             <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12" />
           </div>
@@ -77,7 +108,7 @@ class Tvshows extends Component {
           <div className="row text-center">
             <div className="col-lg-12">
               <h5 className="movieTitle">
-                Popular Tv Shows
+                {navTitle}
               </h5>
               <br />
             </div>
