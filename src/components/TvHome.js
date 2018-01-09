@@ -13,6 +13,12 @@ const TvHome = (props) => {
   const seasonsCount = tv.seasons.length;
   const tvGenres = tv.genres;
   const genreList = Object.keys(tvGenres).map(genre => <Genre key={genre} genre={tvGenres[genre]} />);
+  let statusView = <span />;
+  if (tv.status === 'Ended') {
+    statusView = <span className="badge badge-danger">{tv.status}</span>;
+  } else {
+    statusView = <span className="badge badge-primary">{tv.status}</span>;
+  }
   return (
     <div>
       <div className="container-fluid">
@@ -26,7 +32,7 @@ const TvHome = (props) => {
           </div>
           <div className="col-lg-8">
             <h3 className="movieTitle">
-              {tv.original_name}
+              {tv.original_name} {statusView}
             </h3>
             <ul className="list-inline">
               <li className="list-inline-item">
@@ -36,7 +42,7 @@ const TvHome = (props) => {
               </li>
               <li className="list-inline-item">
                 <button className="btn btn-grey">
-                  <span className="badge badge-dark">{seasonsCount} </span> Seasons
+                  <span className="badge badge-dark">{seasonsCount} </span> Season(s)
                 </button>
               </li>
             </ul>

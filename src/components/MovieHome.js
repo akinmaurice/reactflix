@@ -15,6 +15,12 @@ const MovieHome = (props) => {
   const genreList = Object.keys(movieGenres).map(genre => <Genre key={genre} genre={movieGenres[genre]} />);
   const movieVideos = movie.videos.results;
   const videoList = Object.keys(movieVideos).map(video => <Trailer key={video} trailer={movieVideos[video]} />);
+  let statusView = <span />;
+  if (movie.status === 'Released') {
+    statusView = <span className="badge badge-primary">{movie.status}</span>;
+  } else {
+    statusView = <span className="badge badge-danger">{movie.status}</span>;
+  }
   return (
     <div>
       <div className="container-fluid">
@@ -28,7 +34,7 @@ const MovieHome = (props) => {
           </div>
           <div className="col-lg-8">
             <h3 className="movieTitle">
-              {movie.original_title}
+              {movie.original_title} {statusView}
             </h3>
             <li className="list-inline-item">
               <button className="btn btn-warning movieYear">
