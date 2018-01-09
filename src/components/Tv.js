@@ -24,7 +24,6 @@ class Tv extends Component {
     axios.get(apiUrl)
       .then((response) => {
         const tv = response.data;
-        console.log(tv);
         this.setState({ data: tv, status: true, loading: false });
       })
       .catch((error) => {

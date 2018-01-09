@@ -19,18 +19,12 @@ class App extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.searchMovies = this.searchMovies.bind(this);
+    this.getApiData = this.getApiData.bind(this);
     this.apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`;
   }
 
   componentDidMount() {
-    axios.get(this.apiUrl)
-      .then((response) => {
-        const movieData = response.data.results;
-        this.setState({ data: movieData, loading: false });
-      })
-      .catch((error) => {
-        this.setState({ loading: false });
-      });
+    this.getApiData(this.apiUrl);
   }
 
   // On SUbmit Search Form
@@ -40,19 +34,25 @@ class App extends Component {
     this.searchMovies(searchQuery);
   }
 
-  // Function to fetch Movies with the Search Query
-  searchMovies(query) {
-    this.setState({ data: [], loading: true });
-    navTitle = `Search Results for ${query}`;
-    const searchApi = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&include_adult=false`;
-    axios.get(searchApi)
+  // Get Data From APi
+  getApiData(dataSource) {
+    axios.get(dataSource)
       .then((response) => {
-        const movieData = response.data.results;
+        const requestData = response.data.results;
+        const movieData = requestData.sort((a, b) => b.popularity - a.popularity);
         this.setState({ data: movieData, loading: false });
       })
       .catch((error) => {
         this.setState({ loading: false });
       });
+  }
+
+  // Function to fetch Movies with the Search Query
+  searchMovies(query) {
+    this.setState({ data: [], loading: true });
+    navTitle = `Search Results for ${query}`;
+    const searchApi = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&include_adult=false`;
+    this.getApiData(searchApi);
   }
 
   render() {
