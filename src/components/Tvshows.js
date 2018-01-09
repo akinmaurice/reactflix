@@ -34,7 +34,7 @@ class Tvshows extends Component {
       views = Object.keys(data).map(tv => <TvCard key={tv} details={data[tv]} />);
     } else if (loading && !data.length) {
       views = (
-        <div className="col-lg-12">
+        <div className="col-lg-12 text-center">
           <i className="fa fa-2x fa-circle-o-notch fa-spin" />
         </div>
       );
