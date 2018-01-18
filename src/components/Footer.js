@@ -9,10 +9,11 @@ const Jumbotron = props => (
           <br />
           <br />
           <p>
-          made with <span role="img" aria-label="love">♥️</span> by
+          made with <span role="img" aria-label="love">♥️</span> by&nbsp;
             <a href="https://www.github.com/akinmaurice" rel="noopener noreferrer" target="_blank">
-            &nbsp;akin
+             akin
             </a>
+            &nbsp;<span role="img" aria-label="ghost">👻</span>
           </p>
           <br />
           <br />
