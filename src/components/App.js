@@ -31,7 +31,11 @@ class App extends Component {
   onSubmit(event) {
     event.preventDefault();
     const searchQuery = this.q.value;
-    this.searchMovies(searchQuery);
+    if (searchQuery === '') {
+      this.getApiData(this.apiUrl);
+    } else {
+      this.searchMovies(searchQuery);
+    }
   }
 
   // Get Data From APi

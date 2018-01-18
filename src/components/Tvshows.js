@@ -30,7 +30,11 @@ class Tvshows extends Component {
   onSubmit(event) {
     event.preventDefault();
     const searchQuery = this.q.value;
-    this.searchTv(searchQuery);
+    if (searchQuery === '') {
+      this.getApiData(this.apiUrl);
+    } else {
+      this.searchTv(searchQuery);
+    }
   }
 
   // Get Data API Function
