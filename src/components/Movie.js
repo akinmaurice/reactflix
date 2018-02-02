@@ -6,7 +6,7 @@ import Footer from './Footer';
 import appTitle from '../helpers';
 import MovieHome from './MovieHome';
 
-const apiKey = 'b6ee2fdea63e38fc13788ccec1b2b7d8';
+const apiKey = process.env.REACT_APP_API_KEY;
 
 class Movie extends Component {
   constructor() {

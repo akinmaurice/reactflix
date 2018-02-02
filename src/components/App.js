@@ -6,7 +6,7 @@ import Footer from './Footer';
 import MovieCard from './MovieCard';
 import appTitle from '../helpers';
 
-const apiKey = 'b6ee2fdea63e38fc13788ccec1b2b7d8';
+const apiKey = process.env.REACT_APP_API_KEY;
 let navTitle = `Trending Movies on ${appTitle}`;
 
 class App extends Component {
